@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bizaro-track
+    runtime: docker
+    plan: starter
+    envVars:
+      - {key: ACCESS_CODE, sync: false}
+      - {key: DEV_OTP, value: '1'}   # private-team mode until an SMS provider is integrated (phone not verified!)
+      - {key: TRUST_PROXY, value: '1'}
+      - {key: DATA_DIR, value: /data}
+    disk: {name: bizaro-data, mountPath: /data, sizeGB: 1}
